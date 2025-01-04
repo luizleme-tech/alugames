@@ -1,4 +1,4 @@
-package org.example.com.br.luizleme.tech.alugames.dominio
+package com.br.luizleme.tech.alugames.dominio
 
 class Jogo(val titulo:String, val capa:String) {
     val descricao = ""
