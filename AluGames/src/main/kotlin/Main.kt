@@ -1,5 +1,7 @@
 package com.br.luizleme.tech.alugames
 
+import com.br.luizleme.tech.alugames.dominio.InfoJogo
+import com.br.luizleme.tech.alugames.dominio.Jogo
 import com.google.gson.Gson
 import java.net.URI
 import java.net.http.HttpClient
@@ -19,7 +21,11 @@ fun main() {
     println(json)
 
     val gson = Gson()
-    val meuJogo = gson.fromJson(json, InfoJogo::class.java)
+    val meuInfoJogo = gson.fromJson(json, InfoJogo::class.java)
+
+    val meuJogo = Jogo(
+        meuInfoJogo.info.title,
+        meuInfoJogo.info.thumb)
 
     println(meuJogo)
 }
