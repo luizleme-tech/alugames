@@ -1,4 +1,4 @@
-package com.br.luizleme.tech.alugames.dominio
+package br.com.luizlemetech.alugames.modelo
 
 data class Jogo(val titulo:String,
            val capa:String) {

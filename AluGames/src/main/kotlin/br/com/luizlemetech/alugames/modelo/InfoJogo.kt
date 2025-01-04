@@ -1,4 +1,4 @@
-package com.br.luizleme.tech.alugames.dominio
+package br.com.luizlemetech.alugames.modelo
 
 data class InfoJogo(val info: InfoApiShark) {
 
