@@ -1,5 +1,6 @@
 package org.example
 
+import org.example.com.br.luizleme.tech.alugames.dominio.Jogo
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -16,4 +17,17 @@ fun main() {
 
     val json = response.body()
     println(json)
+
+    val meuJogo = Jogo(
+        "Batman: Arkham Asylum Game of the Year Edition",
+        "https:\\/\\/shared.fastly.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/35140\\/capsule_sm_120.jpg?t=1702934705")
+
+    println(meuJogo)
+
+    val novoJogo = Jogo(
+        capa = "https:\\/\\/shared.fastly.steamstatic.com\\/store_item_assets\\/steam\\/apps\\/35140\\/capsule_sm_120.jpg?t=1702934705",
+        titulo = "Batman: Arkham Asylum Game of the Year Edition"
+    )
+
+    println(novoJogo)
 }
