@@ -1,5 +1,6 @@
 package br.com.luizlemetech.alugames.principal
 
+import br.com.luizlemetech.alugames.modelo.Gamer
 import br.com.luizlemetech.alugames.modelo.Jogo
 import br.com.luizlemetech.alugames.servicos.ConsumoApi
 import java.util.Scanner
@@ -7,6 +8,10 @@ import java.util.Scanner
 
 fun main() {
     val leitura = Scanner(System.`in`)
+
+    val gamer = Gamer.criarGamer(leitura)
+    println("Cadastro concluído com sucesso. Dados do gamer:")
+    println(gamer)
 
     do{
         println("Digite um código de jogo para buscar:")
@@ -37,11 +42,13 @@ fun main() {
             } else {
                 meuJogo?.descricao = meuJogo?.titulo
             }
-            println(meuJogo)
+            gamer.jogosBuscados.add(meuJogo)
         }
         println("Deseja buscar um novo jogo? S/N")
         val resposta = leitura.nextLine()
     } while (resposta.equals("s",true))
 
+    println("Jogos buscados:")
+    println(gamer.jogosBuscados)
     println("Busca finalizada com sucesso")
 }
