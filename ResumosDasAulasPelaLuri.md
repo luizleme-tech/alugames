@@ -429,3 +429,18 @@ Debug: Utilize o debugger do IntelliJ para acompanhar a execução passo a passo
 
 Refatoração: Depois de garantir que seu código funciona corretamente, tente refatorá-lo para melhorar a legibilidade e a organização. Por exemplo, você pode extrair partes do código para funções menores e mais específicas.
 
+
+## Mapeando listas
+
+Revise o código: Compare seu código com o código final apresentado na aula. Preste atenção em detalhes como a utilização correta do .map, a sintaxe da extension function criaGamer(), e se o tipo de retorno da função buscaGamers() está correto (List<Gamer>).
+
+Teste com diferentes entradas: Modifique o arquivo gamers.json com diferentes dados. Execute seu código e verifique se a conversão de InfoGamerJson para Gamer está funcionando corretamente para todos os casos. Tente com um arquivo vazio, com um único gamer, e com vários gamers com dados variados (nomes longos, emails com caracteres especiais, datas de nascimento em diferentes formatos, etc.).
+
+Analise a legibilidade e a organização do código: Seu código está limpo, fácil de entender e manter? A lógica de conversão está separada em uma extension function? Se você precisar usar essa conversão em outro lugar do seu projeto, será fácil reutilizar o código?
+
+Debug: Utilize o debugger do seu IDE para acompanhar a execução passo a passo. Verifique se os valores estão sendo corretamente mapeados e convertidos em cada etapa do processo. Isso ajudará a identificar erros sutis que podem passar despercebidos em testes superficiais.
+
+Refatore seu código: Mesmo que seu código esteja funcionando, tente refatorá-lo para melhorar a legibilidade e a organização. Você pode, por exemplo, melhorar os nomes das variáveis ou funções, ou reorganizar o código em blocos mais lógicos.
+
+### [MAP](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
+
