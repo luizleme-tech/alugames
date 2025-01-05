@@ -1,3 +1,5 @@
+package br.com.luizlemetech.alugames.principal
+
 import br.com.luizlemetech.alugames.modelo.Gamer
 
 fun main() {
