@@ -1,7 +1,9 @@
 package br.com.luizlemetech.alugames.servicos
 
+import br.com.luizlemetech.alugames.modelo.Gamer
 import br.com.luizlemetech.alugames.modelo.InfoGamerJson
 import br.com.luizlemetech.alugames.modelo.InfoJogo
+import br.com.luizlemetech.alugames.utilitario.criaGamer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.net.URI
@@ -40,7 +42,7 @@ class ConsumoApi {
         return null
     }
 
-    fun buscaGamers(): List<InfoGamerJson> {
+    fun buscaGamers(): List<Gamer> {
         val endereco = "https://raw.githubusercontent.com/luizleme-tech/arquivosjson/refs/heads/main/gamers.json"
 
         val client: HttpClient = HttpClient.newHttpClient()
@@ -56,6 +58,8 @@ class ConsumoApi {
         val meuGamerTipo = object : TypeToken<List<InfoGamerJson>>() {}.type
         var listaGamer:List<InfoGamerJson> = gson.fromJson(json, meuGamerTipo)
 
-        return listaGamer
+        val listaGamerConvertida = listaGamer.map { infoGamerJson -> infoGamerJson.criaGamer()}
+
+        return listaGamerConvertida
     }
 }
