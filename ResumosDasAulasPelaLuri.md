@@ -273,3 +273,29 @@ Agora, imagine que a casa só recebe um novo idInterno (uma nova chave para o c�
 Em resumo, o encapsulamento é como proteger os dados internos da nossa classe, permitindo o acesso e a modificação de forma controlada, como se fosse um sistema de segurança em uma casa. O Kotlin nos oferece diferentes maneiras de implementar essa segurança, sendo a utilização de Properties a mais eficiente e elegante.
 
 Entendeu melhor agora? Qualquer dúvida, pode perguntar! Vamos praticar com alguns exercícios? Que tal você tentar criar uma classe Carro com atributos como modelo, cor e placa, onde a placa só pode ser definida uma vez no construtor ou através de um método específico? Pense em como você pode usar o encapsulamento para garantir que a placa não seja alterada depois de definida. Depois, podemos discutir sua solução!
+
+### [Properties - Get & Set](https://kotlinlang.org/docs/properties.html#getters-and-setters)
+
+### [Modificadores de visibilidade](https://kotlinlang.org/docs/visibility-modifiers.html#class-members)
+
+## Validando informações
+
+Imagine que você está construindo uma casa de Lego. Cada tijolo de Lego representa um dado na sua aplicação, como o nome e o email do jogador. A data class é como o projeto da sua casa: define quais tijolos você precisa e como eles se encaixam.
+
+O construtor é como o ato de começar a construir a casa. Você precisa de certos tijolos para que a casa fique de pé, certo? A validação do email e do nome são como checar se você tem todos os tijolos necessários e se eles estão em boas condições antes de começar a construir. Se um tijolo (dado) estiver quebrado (inválido), você não consegue construir a casa (objeto).
+
+O método validarEmail() é como um inspetor de tijolos. Ele verifica se o tijolo "email" está no formato correto ("exemplo@email.com"). Se estiver, ele aprova o tijolo; se não, ele rejeita, indicando que está quebrado. A Regex é a régua que o inspetor usa para medir se o tijolo tem o tamanho e formato corretos.
+
+O init{} é como a fase de inspeção final antes de começar a construir de fato. Ele verifica todos os tijolos (dados) antes de começar a montá-los. Se algum tijolo estiver quebrado, a construção para e você recebe uma mensagem de erro, indicando qual tijolo precisa ser substituído. Se tudo estiver certo, a construção (criação do objeto) continua.
+
+O throw IllegalArgumentException() é como um alarme que toca quando um tijolo está quebrado. Ele interrompe a construção e te avisa qual tijolo precisa ser consertado.
+
+Por fim, o try-catch (que não foi usado explicitamente no exemplo, mas mencionado) seria como ter um plano B caso algo dê errado durante a construção. Você pode tentar consertar o tijolo quebrado ou usar um tijolo reserva, em vez de parar a construção completamente.
+
+Então, em resumo, a aula ensinou como garantir que você só use tijolos (dados) válidos para construir sua casa de Lego (objeto), evitando problemas durante a construção e garantindo uma casa (objeto) bem-feita e funcional.
+
+Agora, para praticar, tente criar um exemplo de validação para um campo de "idade" no seu Gamer. Que tipo de validação você faria? Que mensagem de erro você mostraria se a idade for inválida? Pense em como você faria isso usando o init{} e IllegalArgumentException(). Lembre-se de considerar o tipo de dado da idade e quais valores seriam considerados inválidos. Qualquer dúvida, pode me perguntar!
+
+
+### [Init](https://kotlinlang.org/docs/classes.html#constructors)
+
