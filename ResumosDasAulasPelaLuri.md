@@ -299,3 +299,89 @@ Agora, para praticar, tente criar um exemplo de validação para um campo de "id
 
 ### [Init](https://kotlinlang.org/docs/classes.html#constructors)
 
+# Implementando a lista de jogos
+
+
+## Busca com repetição
+
+Imagine que você é um bibliotecário(a) e precisa organizar as buscas dos seus usuários. Antes, a cada busca por um livro, você precisava recomeçar todo o processo: procurar o livro, anotar o título e autor, e só então registrar a busca. Era trabalhoso, não é?
+
+O do/while é como um sistema automatizado que facilita esse trabalho. É como se você tivesse um formulário onde o usuário preenche o título do livro que procura. O do representa a ação de procurar o livro e anotar as informações. O while é a pergunta: "O usuário quer procurar outro livro?". Se a resposta for "sim", o processo (do) se repete; se for "não", o processo para. Assim, você consegue registrar várias buscas de uma só vez, sem precisar recomeçar a cada uma.
+
+Agora, imagine que você precisa guardar todas as buscas do dia. Antes, você anotava cada busca em um papel separado. Com a lista MutableList<Jogo>, é como se você tivesse um grande caderno onde pode anotar todas as buscas, adicionar novas buscas e, se necessário, apagar alguma anotação. A List<Jogo> seria como um livro de registros antigo, onde você só pode ler as informações, sem poder adicionar ou remover nada. MutableList<Jogo> é muito mais prático para o seu trabalho, certo? Você pode adicionar cada livro encontrado (cada Jogo) a essa lista, criando um registro completo das buscas do dia.
+
+Então, o do/while automatiza o processo de busca, e o MutableList<Jogo> armazena todas as buscas de forma organizada e editável, assim como um bibliotecário organiza as buscas dos seus usuários em um sistema eficiente. Entendeu a analogia? Qualquer dúvida, pode perguntar!
+
+### [Listas e coleções](https://kotlinlang.org/docs/collections-overview.html)
+
+
+## Lista de Jogos Buscados
+
+
+Imagine que você está construindo um álbum de figurinhas digital de jogos. O Gamer é como o próprio álbum, onde você guarda as informações do colecionador (nome, email, etc.) e as figurinhas (jogos buscados).
+
+O companion object é como a loja onde você compra o álbum. Você não precisa ter um álbum em mãos para ir na loja e comprar um, certo? A função criarGamer() dentro do companion object é como o atendente da loja que te ajuda a preencher as informações do seu álbum (nome, email, etc.) antes mesmo de você ter o álbum em mãos. Ele te faz perguntas e, com base nas suas respostas, cria o álbum personalizado para você.
+
+O Scanner é como a sua caneta para preencher as informações no álbum. Em vez de usar várias canetas diferentes, você usa apenas uma para preencher todos os dados. Isso deixa o processo mais eficiente e organizado, assim como no código, onde reutilizamos o mesmo Scanner.
+
+A condicional if (opcao.equals("s", true)) é como uma pergunta: "Você quer um álbum completo ou um álbum básico?". Se você disser "sim" (ou "s"), o atendente te pergunta mais informações (data de nascimento, nome de usuário) para completar o álbum. Se você disser "não", ele cria um álbum básico com apenas o nome e o email.
+
+O return Gamer(...) é como o atendente te entregando o álbum pronto, com todas as informações preenchidas. Dependendo da sua escolha, ele te entrega um álbum completo ou um álbum básico.
+
+Finalmente, adicionar jogos à lista jogosBuscados é como colar as figurinhas no seu álbum. A cada jogo que você busca, você adiciona uma nova figurinha ao seu álbum. O Jogo? indica que algumas páginas do álbum podem estar vazias (null) se você não tiver encontrado todas as figurinhas que queria.
+
+Então, resumindo: a aula ensinou como criar uma função que, como um atendente de loja, te ajuda a criar um álbum de figurinhas digital (o Gamer), te perguntando informações e te entregando o álbum pronto, com a opção de adicionar mais informações (como data de nascimento e nome de usuário) e, depois, te permite adicionar figurinhas (jogos buscados) a ele.
+
+
+### [Companion objects](https://kotlinlang.org/docs/object-declarations.html#data-objects)
+
+**JOGOS BUSCADOS**
+
+146, 150, 153, 612
+
+
+## Manipulando Listas
+
+Imagine que a nossa lista de jogos é como uma pilha de cartas de um jogo de baralho. No começo, elas estão todas embaralhadas, na ordem que foram adicionadas (como a lista jogosBuscados inicialmente).
+
+Ordenação (sortBy): É como se pegássemos essa pilha de cartas embaralhadas e as ordenássemos por naipe ou valor. A função sortBy { it?.titulo } é como se tivéssemos um critério para ordenar: ordenar as cartas pelo nome do jogo (o título). O it?.titulo é como pegar o nome escrito em cada carta para comparar e ordenar. O ? é uma precaução, como se algumas cartas estivessem em branco e precisássemos lidar com essa possibilidade sem que o jogo pare.
+
+Exibição somente do título (forEach): Depois de ordenar, podemos querer ver apenas o nome das cartas, sem ver o resto da informação de cada uma. A função forEach é como se estivéssemos passando por cada carta e anotando apenas o nome em um papel separado. println("Título: " + it?.titulo) é como escrever "Título: [nome da carta]" em nosso papel.
+
+Filtragem (filter): Agora, imagine que queremos apenas as cartas de um naipe específico, por exemplo, apenas os jogos com "Batman" no título. A função filter { it?.titulo?.contains("batman", true) ?: false } é como se estivéssemos separando as cartas, pegando apenas aquelas que possuem a palavra "Batman" no nome, independente de maiúsculas ou minúsculas (true em ignoreCase). O ?: false é como dizer: "Se não encontrar nenhuma carta com 'Batman', a pilha filtrada fica vazia".
+
+Exclusão (removeAt): Finalmente, imagine que queremos tirar uma carta específica da pilha. A função removeAt(posicao) é como se estivéssemos removendo uma carta de uma posição específica da pilha. Precisamos saber a posição da carta (o índice) para removê-la corretamente.
+
+Em resumo, a aula ensina a manipular a lista de jogos como se fosse uma pilha de cartas, permitindo ordená-la, mostrar apenas partes específicas de cada carta, filtrar cartas com características específicas e remover cartas de posições determinadas. Cada função do Kotlin é uma ferramenta para realizar essas operações na nossa "pilha de cartas" (lista).
+
+***Resumo 2***
+
+A aula ensina como manipular uma lista de objetos Jogo em Kotlin. Inicialmente, a lista é exibida na ordem de adição. Aprendemos a:
+
+Ordenar a lista: Usando sortBy { it?.titulo }, ordenamos a lista de jogos alfabeticamente pelo título. O it representa cada elemento da lista, e ?. trata a possibilidade de um título nulo.
+
+Exibir apenas o título: Usando forEach { println("Título: " + it?.titulo) }, iteramos pela lista e imprimimos apenas o título de cada jogo.
+
+Filtrar a lista: Usando filter { it?.titulo?.contains("batman", true) ?: false }, criamos uma nova lista contendo apenas os jogos com "batman" (maiúsculas ou minúsculas) no título. O operador Elvis (?: false) garante que a lista filtrada não seja nula caso não haja jogos correspondentes.
+
+Excluir um item da lista: Usando removeAt(posicao), removemos um jogo da lista original, baseado em sua posição (índice) na lista.
+
+Em resumo, a aula demonstra como usar funções de manipulação de listas em Kotlin para ordenar, filtrar e remover elementos, lidando com a possibilidade de valores nulos e garantindo a robustez do código. Tudo isso usando a mutableList<T>.
+
+
+## Usando Extension functions
+
+Imagine uma Extension Function como um acessório para uma roupa. Você tem uma roupa básica, digamos, uma camiseta branca (a sua classe). Essa camiseta por si só é funcional, mas pode ser melhorada. Uma Extension Function seria como adicionar um broche, um bordado, ou uma estampa (a funcionalidade extra). Você não precisa mudar a camiseta em si, apenas adiciona algo que melhora ou amplia sua funcionalidade.
+
+No nosso caso, a camiseta branca é a classe String que representa a data de nascimento. Ela já existe, já funciona, mas não tem a capacidade de calcular a idade diretamente. A nossa Extension Function transformarEmIdade() é o broche que adicionamos. Ela pega a String (a data de nascimento), faz o processamento necessário (usando DateTimeFormatter e Period), e retorna a idade (um novo atributo). A camiseta continua sendo uma camiseta branca, mas agora tem um detalhe extra, uma nova capacidade.
+
+Outro exemplo: imagine uma caixa de ferramentas (a sua aplicação). Dentro dela, você tem várias ferramentas (classes e funções). Uma Extension Function seria como adicionar uma nova ferramenta multifuncional. Essa ferramenta não precisa ser parte de um conjunto específico, ela pode ser usada com diferentes tipos de parafusos (diferentes classes de dados), adaptando-se à necessidade. No nosso caso, a ferramenta multifuncional é a transformarEmIdade(), que funciona com qualquer String que represente uma data no formato correto.
+
+Por fim, pense em um carro (a sua aplicação). Ele já tem funcionalidades básicas como acelerar, frear e virar (as funções da classe). Uma Extension Function seria como instalar um novo acessório, como um GPS ou um sensor de estacionamento (a nova funcionalidade). Você não precisa modificar o motor ou a estrutura do carro, apenas adiciona um novo recurso que melhora a experiência do usuário. No nosso exemplo, o acessório é a função que calcula a idade a partir da data de nascimento, adicionando uma nova funcionalidade à nossa aplicação sem precisar modificar a estrutura principal.
+
+***Resumo2***
+
+Nesta aula, aprendemos sobre Extension Functions em Kotlin. Elas permitem adicionar novas funcionalidades a classes existentes sem modificá-las diretamente, como adicionar um método a uma classe String para calcular a idade a partir de uma data de nascimento. Criamos uma Extension Function chamada transformarEmIdade() que recebe uma String (data no formato dd/MM/yyyy), usa DateTimeFormatter para parsear a data, LocalDate para representar as datas e Period para calcular a diferença entre a data de nascimento e a data atual, retornando a idade em anos. Aprendemos também a lidar com possíveis erros de formatação de data usando tratamento de exceções (embora a aula tenha sugerido e não implementado). Por fim, vimos como usar essa Extension Function em nosso projeto para exibir a idade do jogador, destacando a flexibilidade e reutilização que as Extension Functions oferecem. A aula também enfatizou a importância de considerar se uma nova funcionalidade deve ser uma Extension Function ou um método dentro da própria classe, dependendo do contexto e da responsabilidade de cada parte do código.
+
+### [Extension Functions](https://kotlinlang.org/docs/extensions.html#extension-functions)
+
