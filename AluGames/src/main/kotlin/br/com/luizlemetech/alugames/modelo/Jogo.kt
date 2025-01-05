@@ -9,7 +9,7 @@ data class Jogo(val titulo:String,
     }
 
     override fun toString(): String {
-        return "Meu Jogo:\n" +
+        return "\n[Jogo]\n" +
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao"
