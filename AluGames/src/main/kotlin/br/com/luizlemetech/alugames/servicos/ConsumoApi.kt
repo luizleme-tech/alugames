@@ -1,7 +1,9 @@
 package br.com.luizlemetech.alugames.servicos
 
+import br.com.luizlemetech.alugames.modelo.InfoGamerJson
 import br.com.luizlemetech.alugames.modelo.InfoJogo
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -36,5 +38,24 @@ class ConsumoApi {
             println("Ocorreu um erro ao tratar os dados do jogo: $id")
         }
         return null
+    }
+
+    fun buscaGamers(): List<InfoGamerJson> {
+        val endereco = "https://raw.githubusercontent.com/luizleme-tech/arquivosjson/refs/heads/main/gamers.json"
+
+        val client: HttpClient = HttpClient.newHttpClient()
+        val request = HttpRequest.newBuilder()
+            .uri(URI.create(endereco))
+            .build()
+
+        val response = client
+            .send(request, HttpResponse.BodyHandlers.ofString())
+
+        val json = response.body()
+        val gson = Gson()
+        val meuGamerTipo = object : TypeToken<List<InfoGamerJson>>() {}.type
+        var listaGamer:List<InfoGamerJson> = gson.fromJson(json, meuGamerTipo)
+
+        return listaGamer
     }
 }
