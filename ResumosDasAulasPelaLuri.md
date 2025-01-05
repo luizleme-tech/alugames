@@ -179,3 +179,123 @@ Por fim, o resultado.onSuccess é como um evento de inauguração do castelo. De
 Vimos que para lidar com exceções no Kotlin podemos utilizar o try-catch do mesmo modo que vimos anteriormente na formação Java. Porém, no Kotlin existe o runCatching, que é outra possibilidade de tratar exceções que consegue capturar a exceção gerada sem interromper o fluxo de execução e salva seu resultado em uma variável que pode ser utilizada para trabalhar comportamentos de sucesso ou de falha de execução de um bloco de código.
 
 Nos links a seguir você pode [conhecer mais sobre o funcionamento do runCatching](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/run-catching.html) e [saber mais sobre as opções de tratamento dos resultados apresentados nas exceções.](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-result/)
+
+## Tratamento de Erros e refatorações
+
+Imagine que você está construindo uma casa. No começo, tudo fica em um único cômodo: ferramentas, materiais, móveis, tudo misturado. É difícil encontrar algo, e a casa fica bagunçada e ineficiente. Esse cômodo único é como nossa Main inicial, com muito código misturado.
+
+A aula nos ensina a organizar essa casa, dividindo-a em cômodos específicos:
+
+Pacotes (Cômodos): São como os cômodos da casa. Criamos pacotes como br.com.alura.alugames.modelo, br.com.alura.alugames.principal e br.com.alura.alugames.servicos. Cada um tem uma função específica:
+
+modelo (Quarto): Guarda os "modelos" da casa, ou seja, as classes que representam os elementos importantes do nosso projeto (como Jogo, InfoJogo, etc.). São os tijolos, a madeira, os móveis da casa.
+principal (Sala de Estar): É onde fica a nossa Main, a entrada principal da casa. Aqui, coordenamos tudo, mas sem fazer todo o trabalho pesado.
+servicos (Cozinha): É onde ficam as tarefas específicas, como buscar informações da API (ConsumoApi). É como a cozinha, onde preparamos os ingredientes (dados da API) para serem usados na sala de estar (Main).
+Classes (Móveis): Cada classe é um móvel específico. Jogo é uma cadeira, InfoJogo é uma mesa, e ConsumoApi é o fogão, que prepara os ingredientes (dados).
+
+Métodos (Ações): Os métodos são as ações que podemos fazer com os móveis. Por exemplo, o método buscaJogo() na classe ConsumoApi é como usar o fogão para cozinhar (buscar dados da API).
+
+Mover as classes para os pacotes certos é como organizar os móveis em seus cômodos apropriados. Colocar o código da API em uma classe separada (ConsumoApi) é como separar a cozinha do resto da casa, deixando a sala de estar (Main) mais limpa e organizada.
+
+Refatorar o código é como reformar a casa: mudamos algumas coisas, mas a estrutura geral permanece a mesma, ficando mais funcional e bonita.
+
+Ao separar as responsabilidades em diferentes classes e pacotes, tornamos o código mais fácil de entender, manter e expandir, assim como uma casa bem organizada é mais fácil de viver e manter. Se precisarmos mudar algo na forma como buscamos informações da API, só precisamos mexer na "cozinha" (ConsumoApi), sem precisar tocar no resto da casa.
+
+# Aprimorando a busca
+
+## Caracterisiticas e comportamentos do Gamer
+
+Imagine que estamos construindo uma locadora de jogos online. Precisamos de duas coisas principais: os jogos (que já modelamos em aulas anteriores) e os jogadores, que são os nossos gamers.
+
+A classe Gamer é como um formulário de cadastro de um cliente na nossa locadora. O construtor primário (data class Gamer(var nome:String, var email:String)) é como a parte mínima do formulário que todo cliente precisa preencher para ter acesso básico: nome e e-mail. É como se fosse o cadastro "express". Você pode entrar na locadora, navegar pelos jogos, mas para alugar, precisa de mais informações.
+
+O construtor secundário (constructor(nome: String, email: String, dataNascimento:String, usuario:String): this(nome, email)) é como um formulário completo. Ele pega tudo do formulário "express" (nome e e-mail) e adiciona informações extras: data de nascimento e nome de usuário. É como se fosse o cadastro completo, que permite alugar jogos. Observe que ele chama o construtor primário (this(nome, email)) primeiro, garantindo que as informações básicas estejam sempre presentes.
+
+O idInterno é como o número do CPF ou RG do cliente. É um identificador único e imutável ( val ), que a locadora usa internamente para rastrear todas as atividades do cliente (aluguéis, pagamentos, etc.). Ele é diferente do nome de usuário, que pode ser alterado.
+
+As Scope functions, como let, são como ferramentas mágicas que nos permitem modificar o formulário do cliente de forma mais eficiente. Imagine que você precisa atualizar a data de nascimento e o nome de usuário de um cliente. Ao invés de escrever várias linhas de código separadas (gamer1.nome = "novoNome"; gamer1.dataNascimento = "novaData";), usamos uma Scope function para fazer tudo de uma vez só, de forma mais limpa e organizada.
+
+Por fim, a mudança de val para var em dataNascimento e idInterno é como permitir que a locadora altere informações no formulário do cliente. Inicialmente, esses campos eram imutáveis (como o CPF), mas percebemos que precisamos permitir alterações (como atualizar a data de nascimento).
+
+Então, resumindo: a classe Gamer modela nossos clientes, os construtores são como formulários de cadastro com diferentes níveis de detalhe, o idInterno é um identificador único, e as Scope functions são ferramentas para facilitar a manipulação dos dados do cliente.
+
+
+### Scope functions
+
+As scope functions, ou funções de escopo, são funções que têm como objetivo executar um bloco de código em um objeto de maneira mais concisa e legível. Todas as scope functions possuem o mesmo objetivo, a diferença entre elas é como esse objeto está disponível no bloco de código e qual será o resultado da expressão.
+
+As scope functions são:
+
+- let - executa uma ação em um objeto e retorna o resultado da expressão lambda;
+
+- run - também executa uma ação em um objeto como o let, mas não retorna o resultado da expressão, e sim o resultado do bloco de código;
+
+- with - executa uma sequência de operações sendo necessário passar o objeto como argumento explícito;
+
+- apply - realiza operações de configuração em um objeto e retorna o próprio objeto modificado;
+
+- also - realiza a mesma coisa que o apply, porém retorna o próprio objeto original.
+
+Para conhecer mais sobre as scope functions, como funciona cada uma e ver exemplos práticos de aplicação, [recomendamos a leitura da documentação](https://kotlinlang.org/docs/scope-functions.html).
+
+## Adicionando novos métodos
+
+Para analisar se você aplicou corretamente os conceitos da aula sobre a adição do método criarIdInterno() na classe Gamer, sugiro que você siga estes passos:
+
+Revise o código: Compare seu código com o exemplo fornecido na aula. Preste atenção em cada detalhe: a declaração do método, a geração do número aleatório com Random.nextInt(10000), o uso de String.format("%04d", numero) para garantir um número de quatro dígitos, a concatenação para formar o idInterno ("$usuario#$tag") e, finalmente, a chamada do método criarIdInterno() dentro do construtor da classe Gamer.
+
+Teste seu código: Execute seu TesteGamer.kt. Observe atentamente a saída no terminal. Você consegue ver o idInterno sendo gerado corretamente para cada instância de Gamer criada? O formato nomeDeUsuario#númeroDeQuatroDígitos está sendo respeitado? Se você criar vários objetos Gamer, cada um terá um idInterno único?
+
+Analise a lógica: Pense na lógica por trás do código. O idInterno deve ser gerado apenas uma vez, no momento da criação do objeto Gamer. Seu código garante isso? Se você tentar modificar o idInterno diretamente após a criação do objeto, ele deve permanecer inalterado. Seu código reflete esse comportamento?
+
+Faça um teste adicional: Crie um novo objeto Gamer no seu TesteGamer.kt com um nome diferente e observe se o idInterno gerado é único e segue o padrão esperado. Isso ajudará a confirmar que o método está funcionando corretamente para diferentes entradas.
+
+## Encapsulando Dados
+
+Imagine uma casa (nossa classe Gamer). Dentro dessa casa, temos vários cômodos (atributos como idInterno, nome, email).
+
+Encapsulamento sem getters e setters explícitos (apenas private):
+
+Inicialmente, nosso idInterno era como um cômodo secreto, trancado com uma fechadura super reforçada (private). Ninguém de fora (outras partes do código) consegue entrar ou ver o que tem lá dentro. Nem mesmo nós conseguimos acessar diretamente, pois ele começa vazio (null). Isso é como uma casa que só pode ser acessada pela porta da frente, mas a porta está trancada e não temos a chave.
+
+Encapsulamento com getters e setters explícitos (como em Java):
+
+Depois, aprendemos a criar uma "fechadura inteligente" (getIdInterno()). Essa fechadura permite que apenas pessoas autorizadas (a nossa classe Gamer) abram a porta e vejam o que tem dentro do cômodo secreto. É como se tivéssemos uma chave especial para o cômodo secreto. Ainda assim, não podemos mudar o que está dentro do cômodo sem uma chave diferente (um setter).
+
+Encapsulamento com Properties do Kotlin (a forma mais idiomática):
+
+A forma mais elegante no Kotlin é como se a casa já viesse com uma "fechadura inteligente" embutida em cada cômodo. Podemos ver o conteúdo do cômodo (get), mas só podemos mudar o que está dentro dele se tivermos a permissão (private set). É como se a casa tivesse um sistema de segurança interno que permite a visualização, mas restringe a alteração sem autorização. A chave para alterar o conteúdo está com a casa (a classe Gamer).
+
+O set(value) com a condição:
+
+Agora, imagine que a casa só recebe um novo idInterno (uma nova chave para o cômodo secreto) quando um novo morador (usuario) se muda. O set(value) com a condição if(idInterno.isNullOrBlank()) é como se a casa só gerasse uma nova chave para o cômodo secreto (criarIdInterno()) quando um novo morador se inscreve. Se o morador já existe, a chave antiga continua válida.
+
+Em resumo, o encapsulamento é como proteger os dados internos da nossa classe, permitindo o acesso e a modificação de forma controlada, como se fosse um sistema de segurança em uma casa. O Kotlin nos oferece diferentes maneiras de implementar essa segurança, sendo a utilização de Properties a mais eficiente e elegante.
+
+Entendeu melhor agora? Qualquer dúvida, pode perguntar! Vamos praticar com alguns exercícios? Que tal você tentar criar uma classe Carro com atributos como modelo, cor e placa, onde a placa só pode ser definida uma vez no construtor ou através de um método específico? Pense em como você pode usar o encapsulamento para garantir que a placa não seja alterada depois de definida. Depois, podemos discutir sua solução!
+
+### [Properties - Get & Set](https://kotlinlang.org/docs/properties.html#getters-and-setters)
+
+### [Modificadores de visibilidade](https://kotlinlang.org/docs/visibility-modifiers.html#class-members)
+
+## Validando informações
+
+Imagine que você está construindo uma casa de Lego. Cada tijolo de Lego representa um dado na sua aplicação, como o nome e o email do jogador. A data class é como o projeto da sua casa: define quais tijolos você precisa e como eles se encaixam.
+
+O construtor é como o ato de começar a construir a casa. Você precisa de certos tijolos para que a casa fique de pé, certo? A validação do email e do nome são como checar se você tem todos os tijolos necessários e se eles estão em boas condições antes de começar a construir. Se um tijolo (dado) estiver quebrado (inválido), você não consegue construir a casa (objeto).
+
+O método validarEmail() é como um inspetor de tijolos. Ele verifica se o tijolo "email" está no formato correto ("exemplo@email.com"). Se estiver, ele aprova o tijolo; se não, ele rejeita, indicando que está quebrado. A Regex é a régua que o inspetor usa para medir se o tijolo tem o tamanho e formato corretos.
+
+O init{} é como a fase de inspeção final antes de começar a construir de fato. Ele verifica todos os tijolos (dados) antes de começar a montá-los. Se algum tijolo estiver quebrado, a construção para e você recebe uma mensagem de erro, indicando qual tijolo precisa ser substituído. Se tudo estiver certo, a construção (criação do objeto) continua.
+
+O throw IllegalArgumentException() é como um alarme que toca quando um tijolo está quebrado. Ele interrompe a construção e te avisa qual tijolo precisa ser consertado.
+
+Por fim, o try-catch (que não foi usado explicitamente no exemplo, mas mencionado) seria como ter um plano B caso algo dê errado durante a construção. Você pode tentar consertar o tijolo quebrado ou usar um tijolo reserva, em vez de parar a construção completamente.
+
+Então, em resumo, a aula ensinou como garantir que você só use tijolos (dados) válidos para construir sua casa de Lego (objeto), evitando problemas durante a construção e garantindo uma casa (objeto) bem-feita e funcional.
+
+Agora, para praticar, tente criar um exemplo de validação para um campo de "idade" no seu Gamer. Que tipo de validação você faria? Que mensagem de erro você mostraria se a idade for inválida? Pense em como você faria isso usando o init{} e IllegalArgumentException(). Lembre-se de considerar o tipo de dado da idade e quais valores seriam considerados inválidos. Qualquer dúvida, pode me perguntar!
+
+
+### [Init](https://kotlinlang.org/docs/classes.html#constructors)
+
