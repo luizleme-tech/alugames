@@ -1,4 +1,6 @@
-# Boas Vindas
+# KOTLING DESENVOLVENDO SUA PRIMEIRA APLICAÇÃO
+
+## Boas Vindas
 
 Olá, estudante! Que bom te ver por aqui!Essa aula introdutória do curso "Kotlin: desenvolvendo sua primeira aplicação" apresenta o projeto AluGames, uma plataforma de aluguel de jogos que será desenvolvida ao longo do curso.  O foco será no desenvolvimento do back-end, utilizando a linguagem Kotlin.
 
@@ -384,4 +386,46 @@ Por fim, pense em um carro (a sua aplicação). Ele já tem funcionalidades bás
 Nesta aula, aprendemos sobre Extension Functions em Kotlin. Elas permitem adicionar novas funcionalidades a classes existentes sem modificá-las diretamente, como adicionar um método a uma classe String para calcular a idade a partir de uma data de nascimento. Criamos uma Extension Function chamada transformarEmIdade() que recebe uma String (data no formato dd/MM/yyyy), usa DateTimeFormatter para parsear a data, LocalDate para representar as datas e Period para calcular a diferença entre a data de nascimento e a data atual, retornando a idade em anos. Aprendemos também a lidar com possíveis erros de formatação de data usando tratamento de exceções (embora a aula tenha sugerido e não implementado). Por fim, vimos como usar essa Extension Function em nosso projeto para exibir a idade do jogador, destacando a flexibilidade e reutilização que as Extension Functions oferecem. A aula também enfatizou a importância de considerar se uma nova funcionalidade deve ser uma Extension Function ou um método dentro da própria classe, dependendo do contexto e da responsabilidade de cada parte do código.
 
 ### [Extension Functions](https://kotlinlang.org/docs/extensions.html#extension-functions)
+
+---
+
+
+# KOTLING EVOLUINDO A APLICAÇÃO OO
+
+No primeiro curso, construímos a estrutura básica: paredes, telhado, etc. Agora, neste curso, vamos aprimorar a casa, tornando-a mais elegante, funcional e fácil de manter.
+
+Refatorar o código (melhorar a organização do código): Imagine que a estrutura da nossa casa está um pouco bagunçada, com fios elétricos expostos e encanamentos mal organizados. Refatorar é como reorganizar tudo isso, deixando os fios embutidos, os encanamentos limpos e organizados, tornando a casa mais bonita e fácil de entender. Um código refatorado é mais fácil de ler, entender e manter.
+
+Herança e Interfaces (reaproveitar código e definir padrões): Pense em diferentes cômodos da casa: quarto, cozinha, banheiro. Cada um tem suas características únicas, mas todos compartilham características comuns, como paredes, teto e piso. A herança é como criar um modelo básico de cômodo (a classe pai) e, a partir dele, criar quartos, cozinhas e banheiros (as classes filhas), herdando as características comuns e adicionando suas próprias características específicas. Interfaces são como definir padrões: todos os cômodos devem ter uma porta e uma janela, por exemplo.
+
+Encapsulamento (proteger os dados): Imagine que você tem um cofre dentro da sua casa para guardar objetos de valor. O encapsulamento é como esse cofre: ele protege seus objetos de valor (os dados do programa) de acessos não autorizados. Somente quem tem a chave (o código apropriado) pode acessar o conteúdo do cofre.
+
+Polimorfismo (flexibilidade): Imagine que você tem diferentes tipos de lâmpadas na sua casa: lâmpadas incandescentes, fluorescentes e LED. Todas elas têm a função de iluminar (o mesmo método), mas cada uma faz isso de uma maneira diferente. O polimorfismo permite que você use diferentes tipos de lâmpadas (objetos) sem precisar se preocupar com como cada uma funciona internamente. Você simplesmente liga a lâmpada e ela ilumina.
+
+No projeto AluGames, essas funcionalidades (aluguel, plano de pagamento, recomendação e descontos) são como adicionar novos cômodos e funcionalidades à nossa casa, usando os conceitos de OO para manter tudo organizado, eficiente e fácil de expandir.
+
+
+## Consumindo dados dos gamers
+
+Nesta aula, aprendemos a consumir dados de um arquivo JSON contendo informações de gamers, utilizando as boas práticas de programação em Kotlin.
+
+Para isso, criamos uma nova classe InfoGamerJson como uma data class, mapeando os campos do JSON (nome, email, data de nascimento e usuário).
+
+Depois, reutilizamos e adaptamos a função buscaJogo() da classe ConsumoApi, criando a função buscaGamers(), que lê o arquivo JSON e converte os dados para uma lista de objetos InfoGamerJson. O ponto chave foi o uso do TypeToken para especificar corretamente o tipo de retorno (uma lista de InfoGamerJson) para o método gson.fromJson(), resolvendo um problema de conversão de tipos.
+
+ Finalmente, testamos a nova funcionalidade em um arquivo testeJson.kt, imprimindo a lista de gamers obtida. Vimos na prática como reutilizar código e lidar com a conversão de JSON para objetos complexos em Kotlin.
+
+
+ Revise o código: Compare seu código com o código final apresentado na aula. Preste atenção em detalhes como:
+
+A estrutura da sua data class InfoGamerJson: Ela contém exatamente os mesmos campos (nome, email, dataNascimento, usuario) e tipos de dados que o exemplo?
+A função buscaGamers() na classe ConsumoApi: Ela utiliza corretamente o HttpClient para fazer a requisição HTTP? O endereço da URL está correto? A conversão do JSON para a lista de InfoGamerJson usa o TypeToken como mostrado na aula? O tipo de retorno está definido como List<InfoGamerJson>?
+O arquivo testeJson.kt: Ele instancia corretamente a classe ConsumoApi, chama o método buscaGamers() e imprime o resultado de forma que você consiga visualizar os dados dos gamers?
+Teste com diferentes dados: Modifique o arquivo gamers.json com alguns dados diferentes. Execute seu código novamente e verifique se a lista impressa reflete as alterações no arquivo JSON. Isso ajudará a garantir que seu código está lendo e processando os dados corretamente, e não apenas funcionando com os dados originais.
+
+Tratamento de erros: Tente introduzir erros propositalmente no seu código (por exemplo, um erro de digitação no nome de um campo na data class ou na URL do arquivo JSON) e veja como seu programa reage. Um programa robusto deve lidar com erros de forma elegante, por exemplo, exibindo uma mensagem de erro informativa ao invés de simplesmente travar.
+
+Debug: Utilize o debugger do IntelliJ para acompanhar a execução passo a passo do seu código. Isso permitirá que você inspecione o valor das variáveis em cada etapa do processo, ajudando a identificar possíveis erros.
+
+Refatoração: Depois de garantir que seu código funciona corretamente, tente refatorá-lo para melhorar a legibilidade e a organização. Por exemplo, você pode extrair partes do código para funções menores e mais específicas.
 
