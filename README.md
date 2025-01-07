@@ -16,6 +16,7 @@
 ## Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
+- [Status do Projeto](#status-do-projeto)
 - [Recursos e Funcionalidades](#recursos-e-funcionalidades)
 - [Requisitos](#requisitos)
 - [Estrutura do Projeto](#estrutura-do-projeto)
@@ -23,11 +24,14 @@
 - [Execução do Projeto](#execução-do-projeto)
 - [Contribuições](#contribuições)
 - [Licença](#licença)
-- [Contato](#pessoas-desenvolvedoras-do-projeto)
+- [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras-do-projeto)
 
 ## Sobre o Projeto
 
 O **AluGames** é uma plataforma de aluguel de jogos desenvolvida em Kotlin, criada para proporcionar uma experiência prática e educativa. Este repositório é parte do curso "Kotlin: Desenvolvendo sua Primeira Aplicação" e foca no desenvolvimento do back-end com boas práticas, consumo de APIs externas e tratamento de exceções.
+
+## Status do Projeto
+🛠️ Projeto em desenvolvimento.
 
 ## Recursos e Funcionalidades
 
