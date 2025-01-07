@@ -507,3 +507,68 @@ Imagine a classe Gamer como um armário individual em nossa locadora. Cada armá
 O método alugaJogo() é como o atendente da locadora. Quando um cliente (Gamer) quer alugar um jogo (Jogo), o atendente (método) verifica a disponibilidade, calcula o preço e guarda o "pacote" (Aluguel) na gaveta do cliente (adiciona na lista jogosAlugados). É como se o atendente registrasse o aluguel em um livro de registro (a lista jogosAlugados).
 
 No testeJson.kt, estamos simulando alguns clientes (Gamers) e jogos (Jogos) que temos na locadora. Selecionamos alguns jogos específicos (usando listaJogoJson.get(numero)), como se estivéssemos pegando os jogos das prateleiras. Criamos diferentes períodos de aluguel (usando plusDays), como se estivéssemos oferecendo opções de aluguel por 3, 7 ou 10 dias. Finalmente, simulamos os aluguéis, como se o atendente estivesse registrando cada aluguel na gaveta de cada cliente. Ao final, imprimimos o conteúdo da gaveta de um cliente específico (println(gamerCaroline.jogosAlugados)), como se estivéssemos verificando o histórico de aluguéis de um cliente em particular.
+
+
+## Construindo o plano avulso
+
+Imagine que nosso jogo é o prato principal. No início, tínhamos apenas um prato simples (o plano avulso), sem acompanhamentos extras. Era um prato bom, mas sem muitos atrativos. Esse prato simples é como o nosso PlanoAvulso, que já está associado ao jogador (Gamer) desde o início, como se todo cliente que entra no restaurante já recebesse, pelo menos, um prato simples.
+
+Agora, com os novos planos (Prata, Ouro, Platina e Diamante), estamos adicionando menus diferentes. Cada menu (plano) oferece mais itens (jogos) e descontos (desconto na reputação) por um preço maior. É como se o restaurante oferecesse diferentes combos: um combo simples (Bronze), um combo com entrada e sobremesa (Prata), um combo com entrada, sobremesa e bebida (Ouro), e assim por diante. Cada combo tem um preço e benefícios diferentes.
+
+O cálculo do valor do aluguel ( obterValor() ) é como o caixa do restaurante. Antes, o caixa calculava o preço do prato principal sozinho. Agora, o caixa consulta o menu escolhido pelo cliente (o plano) para saber o preço final, considerando os adicionais incluídos no combo. Movemos a responsabilidade do cálculo do preço do prato principal para o menu (plano), tornando o sistema mais organizado e escalável. Assim como no restaurante, podemos adicionar novos menus (planos) sem precisar mudar a lógica do caixa (a classe Aluguel).
+
+A mudança de val plano para var plano é como permitir que o cliente mude de combo durante a refeição. Inicialmente, o cliente recebe o combo básico, mas pode optar por um combo mais completo durante a sua experiência no restaurante.
+
+## Criando o plano assinatura e usando a herança
+
+Imagine uma fábrica de carros. A classe Plano seria como o projeto básico de um carro: ele define características comuns a todos os carros, como o chassi, o motor e os pneus. Esse projeto básico é o "esqueleto" que todas as outras versões de carro vão usar. Ele é open, ou seja, aberto para modificações e extensões.
+
+Agora, PlanoAvulso e PlanoAssinatura seriam como modelos específicos de carros, como um carro esportivo e um carro familiar. Eles herdam as características básicas do projeto principal (Plano), mas adicionam características próprias: o esportivo pode ter um motor mais potente, e o familiar, mais espaço interno. Eles "herdam" o chassi, o motor e os pneus do projeto básico, mas adicionam seus próprios componentes. O método obterValor() seria como o cálculo do preço final do carro, que depende das características básicas (definidas em Plano) e das características específicas de cada modelo (adicionadas em PlanoAvulso e PlanoAssinatura).
+
+Outro exemplo: pense em animais. Plano seria a classe animal, com características comuns a todos os animais, como o número de patas (ou ausência delas), a necessidade de se alimentar, etc. PlanoAvulso seria um tipo específico de animal, como um cachorro, que herda as características gerais de animal, mas adiciona características específicas, como latir e abanar o rabo. PlanoAssinatura seria outro tipo de animal, como um gato, que também herda as características gerais de animal, mas adiciona características próprias, como miar e escalar. O método obterValor() poderia ser algo como "calcular a necessidade de alimento" - um animal grande precisará de mais alimento do que um animal pequeno, mas ambos precisam se alimentar.
+
+Entendeu a ideia? A herança permite que você crie classes mais específicas a partir de classes mais genéricas, reutilizando código e evitando repetições. É como construir com blocos de LEGO: você tem blocos básicos e pode combiná-los de diferentes maneiras para criar estruturas complexas.
+
+## Aplicando Polimorfismo
+
+Imagine uma lanchonete que oferece diferentes tipos de combos. Cada combo (como um Plano no nosso código) tem um preço base, mas pode ter variações. Um combo simples (PlanoAvulso) tem apenas o preço do lanche. Já um combo promocional (PlanoAssinatura) inclui um lanche principal, uma bebida e uma batata frita por um preço fixo. Se você pedir mais itens além do combo, você paga a parte.
+
+No nosso código, o método obterValor() é como a calculadora de preço da lanchonete. Para o combo simples, o cálculo é direto: preço do lanche. Mas para o combo promocional, a calculadora precisa considerar se você está pedindo itens além do que já está incluso no combo. Se você pedir apenas os itens inclusos, você paga o preço fixo do combo. Se pedir mais, você paga o preço do combo mais o valor dos itens extras.
+
+A sobrescrita do método obterValor() (override) é como se a lanchonete tivesse duas calculadoras: uma para combos simples e outra para combos promocionais. Ambas calculam o valor total, mas usam fórmulas diferentes dependendo do tipo de combo. O open antes do método obterValor() na classe Plano é como se a lanchonete permitisse que cada tipo de combo tivesse sua própria calculadora personalizada.
+
+Assim, o polimorfismo permite que diferentes tipos de planos (PlanoAvulso, PlanoAssinatura, etc.) respondam ao mesmo método (obterValor()) de maneiras diferentes, sem que precisemos escrever código separado para cada tipo de plano. É como se a lanchonete tivesse um sistema que automaticamente escolhe a calculadora certa para cada combo, simplificando o processo e tornando-o mais eficiente.
+
+
+## Verificando limite de jogos
+
+Imagine que cada plano de assinatura (como Prata, Ouro, etc.) tem um limite de jogos que o usuário pode alugar por mês. A nossa função obterValor() é como a atendente da locadora que calcula o valor a ser pago no final do mês.
+
+Antes, nossa atendente só calculava o valor total dos jogos alugados. Agora, precisamos deixá-la mais esperta! Ela precisa verificar quantos jogos o cliente alugou naquele mês (totalJogosNoMes). Isso é como contar os jogos que estão na sacola do cliente. Para isso, usamos o .size, que é como contar os itens dentro da sacola.
+
+O if é como a atendente verificando se a sacola do cliente está dentro do limite do plano. Se o número de jogos for menor ou igual ao limite do plano (jogosIncluidos), o valor a ser pago é zero (grátis!). Se ultrapassar o limite, ela calcula o valor total dos jogos alugados, usando o super.obterValor(aluguel), que é como chamar a calculadora antiga, que só somava os valores.
+
+O return if é como a atendente dando a resposta de forma mais elegante: "Se a sacola estiver dentro do limite, o valor é zero; senão, é o valor total calculado".
+
+O problema que encontramos depois foi como se a atendente estivesse esquecendo de adicionar o último jogo alugado na sacola antes de fazer a contagem! Então, adicionamos o +1 para corrigir esse erro, como se estivéssemos lembrando a atendente de incluir o último jogo na contagem.
+
+Em resumo, a aula foi sobre como adicionar uma regra de limite de jogos em nosso sistema de assinatura, tornando nossa "atendente" (função) mais inteligente e capaz de lidar com diferentes cenários, utilizando a IDE para melhorar a legibilidade do código.
+
+## Conhecendo classes abstratas
+
+Imagine que você está construindo uma casa de Lego. Plano seria como o manual de instruções geral de uma casa. Ele descreve o que uma casa precisa ter: paredes, teto, portas, janelas, mas não te dá um modelo concreto para construir. Você não pode simplesmente construir uma casa usando apenas o manual geral, certo? Ele é uma ideia abstrata de uma casa.
+
+PlanoAvulso e PlanoAssinatura seriam como os manuais de instruções específicos para dois tipos diferentes de casas: uma casa pequena e simples (avulsa) e uma casa grande e complexa (assinatura). Você pode usar esses manuais para construir casas reais, concretas. Eles são classes concretas que herdam as características gerais do manual principal (Plano), mas adicionam detalhes específicos.
+
+Uma classe abstrata, como Plano, é como esse manual geral: define as características básicas, mas não pode ser usada diretamente para criar algo concreto. Você precisa de um manual mais específico (uma classe concreta) para construir algo de verdade. Usar abstract na classe Plano é como colocar um aviso no manual geral: "Este manual não serve para construir uma casa diretamente. Use os manuais específicos para isso!".
+
+Agora, imagine que você quer controlar quem pode criar manuais de instruções para casas. Você só quer que pessoas da sua equipe de design criem esses manuais. As classes seladas são como colocar um cadeado no manual geral, permitindo apenas membros da sua equipe (mesmo pacote) a criar novos manuais específicos (herdar da classe selada). Ninguém de fora pode criar um novo tipo de casa sem sua permissão.
+
+Então, resumindo:
+
+Classe abstrata: Um manual geral, que define as características básicas, mas não pode ser usado diretamente para criar algo concreto. Serve como base para classes concretas.
+Classe selada: Um manual geral com um cadeado, que define as características básicas e controla quem pode criar novos manuais específicos (classes concretas que herdam dela).
+
+### [HERANÇA](https://kotlinlang.org/docs/inheritance.html#overriding-properties)
+### [CLASSE ABSTRATA](https://kotlinlang.org/docs/classes.html#abstract-classes)
+### [CLASSE SELADA](https://kotlinlang.org/docs/sealed-classes.html)
