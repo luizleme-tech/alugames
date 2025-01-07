@@ -444,3 +444,66 @@ Refatore seu código: Mesmo que seu código esteja funcionando, tente refatorá-
 
 ### [MAP](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/map.html)
 
+
+## Refatorando código
+
+Imagine que você está construindo uma casa de Lego. Você tem várias partes iguais, como janelas, portas e tijolos. Inicialmente, você constrói cada janela separadamente, usando os mesmos tijolos e instruções para cada uma. Isso é como o código original, com os métodos buscaJogo() e buscaGamers() fazendo a mesma coisa (a requisição HTTP) de forma repetida.
+
+Agora, imagine que você decide criar um "kit de janela". Este kit contém todos os tijolos e instruções para construir uma janela. Você usa este kit para construir todas as janelas da sua casa. Isso é exatamente o que fizemos com o método consomeDados(). Ele se tornou o nosso "kit de requisição HTTP", reutilizável em qualquer lugar que precisarmos fazer uma requisição.
+
+Criar o consomeDados() é como criar uma função ou um método que encapsula um bloco de código repetido. Assim como o kit de janela simplifica a construção da casa, o consomeDados() simplifica o código, tornando-o mais fácil de ler, entender e manter. Se precisarmos mudar algo na forma como fazemos a requisição (mudar o tipo de tijolo, por exemplo), só precisamos modificar o "kit" (consomeDados()), e não cada janela individualmente (cada método que fazia a requisição).
+
+Tornar o consomeDados() privado é como colocar o kit de janela em uma caixa trancada. Só podemos usá-lo dentro da nossa casa (classe ConsumoApi), evitando que seja usado incorretamente em outros lugares.
+
+Finalmente, testar o código depois da refatoração é como verificar se a casa está firme e funcionando corretamente depois de construir todas as janelas com o kit. Se tudo estiver funcionando, significa que a nossa refatoração foi bem-sucedida e melhorou o nosso código sem quebrar nada.
+
+
+## Estruturando o aluguel de jogos
+
+Analogia 1: Aluguel de Bicicleta
+
+Imagine uma locadora de bicicletas. Para alugar uma bicicleta, você precisa de duas coisas: o cliente (o gamer) e a bicicleta (o jogo). A classe Aluguel é como o formulário de aluguel da locadora. Ele registra quem alugou (o cliente/gamer) e qual bicicleta foi alugada (o jogo). O método alugaJogo() é como o atendente da locadora que pega as informações do cliente e da bicicleta e preenche o formulário de aluguel.
+
+Analogia 2: Pedido de Restaurante
+
+Pense em um restaurante. Você (o gamer) faz um pedido de um prato específico (o jogo). O restaurante (a aplicação) precisa registrar esse pedido para preparar e entregar. A classe Aluguel seria como o comprovante do seu pedido, contendo suas informações e o prato escolhido. O método alugaJogo() seria o ato de você fazer o pedido ao garçom. O toString() da classe Aluguel seria a descrição do seu pedido impresso no comprovante: "Pedido de X por Y".
+
+Analogia 3: Construção de Lego
+
+Imagine que você está construindo uma casa de Lego. Você tem tijolos (classes) que representam diferentes partes da casa: paredes (Gamer), telhado (Jogo), e a porta (Aluguel). A classe Aluguel é um tijolo especial que conecta a parede (o gamer) e o telhado (o jogo) para formar a casa (o aluguel). O método alugaJogo() seria a instrução de como conectar esses tijolos.
+
+Em todas essas analogias, a Orientação a Objetos ajuda a organizar as informações de forma clara e eficiente, assim como na organização das peças de Lego ou dos itens em um pedido de restaurante. Cada parte tem sua função e se conecta com as outras de forma lógica e estruturada.
+
+
+## Calculando o aluguel do Jogo
+
+Cada classe, como Aluguel, Gamer e Jogo, é uma peça desse quebra-cabeça. No início, tínhamos apenas algumas peças, representando o aluguel de um jogo sem o cálculo do preço. Era como ter um quebra-cabeça de um carro sem as rodas – faltava uma parte essencial!
+
+A adição das datas inicial e final (dataInicial e dataFinal) foi como adicionar as rodas ao nosso carro-quebra-cabeça. Agora, temos mais informações para construir a imagem completa.
+
+O cálculo do valorDoAluguel, usando Period.between(dataInicial, dataFinal).days, é como encontrar a peça que encaixa perfeitamente entre as datas. Period.between() é a ferramenta mágica que mede a distância entre as datas, dando-nos o número de dias. Multiplicar pelo jogo.preco é como adicionar o detalhe final, o valor monetário, para completar a imagem.
+
+Por fim, o toString() é como colocar a moldura no nosso quebra-cabeça completo, apresentando a imagem final de forma organizada e legível: "Aluguel do jogo [nome do jogo] por [nome do gamer] pelo valor R$[valor]".
+
+Então, a aula foi como adicionar peças importantes ao nosso quebra-cabeça, tornando-o completo e funcional, representando o aluguel de um jogo com o cálculo preciso do seu valor. Cada etapa, cada adição de código, foi uma peça fundamental para a imagem final.
+
+## Encapsulando Dados
+
+Olá, estudante! Que bom te ver por aqui! Vamos lá, vamos entender melhor essa aula usando analogias.
+
+Imagine que estamos construindo uma casa de Lego. No início, tínhamos tijolos soltos representando dataInicial e dataFinal no aluguel de jogos. Esses tijolos, por si só, não formam nada muito útil. A ideia de criar a classe Periodo é como construir um novo tijolo maior, mais complexo, que junta esses dois tijolos menores (dataInicial e dataFinal) em uma única peça. Esse novo tijolo, Periodo, agora contém toda a informação sobre o período de aluguel, incluindo o cálculo dos dias (emDias). É mais organizado e fácil de usar, não é? Antes, tínhamos que lidar com dois tijolos separadamente; agora, temos um único tijolo que representa o conceito completo.
+
+Agora, pense no método alugaJogo(). Antes, ele precisava de dois tijolos separados (dataInicial e dataFinal) para funcionar. Agora, ele só precisa de um: o nosso novo tijolo Periodo. É como se tivéssemos simplificado a construção da nossa casa de Lego, usando peças maiores e mais eficientes.
+
+A mudança no testeJson.kt é como adicionar uma nova instrução na nossa construção. Criamos o periodo com LocalDate.now() e LocalDate.now().plusDays(7), que é como pegar dois tijolos específicos (datas) e encaixá-los no nosso tijolo maior Periodo. Assim, podemos usar esse tijolo completo para construir o aluguel do jogo.
+
+Por fim, definir o preço do jogo em Jogo.kt é como adicionar uma etiqueta de preço em cada tijolo de jogo. Antes, o preço estava "escondido", agora está visível e acessível, tornando a nossa construção (o programa) mais completa e informativa.
+
+
+## Registrando Histórico de Aluguel
+
+Imagine a classe Gamer como um armário individual em nossa locadora. Cada armário (Gamer) tem um nome (nome do gamer), um endereço de e-mail (email) e data de nascimento (dataNascimento). Dentro desse armário, temos uma gaveta especial chamada jogosAlugados. Essa gaveta é uma lista (mutableListOf<Aluguel>) onde guardamos todos os jogos que o cliente alugou. Cada jogo alugado é como um pequeno pacote (Aluguel) contendo informações: qual jogo foi alugado, por quanto tempo e o valor total.
+
+O método alugaJogo() é como o atendente da locadora. Quando um cliente (Gamer) quer alugar um jogo (Jogo), o atendente (método) verifica a disponibilidade, calcula o preço e guarda o "pacote" (Aluguel) na gaveta do cliente (adiciona na lista jogosAlugados). É como se o atendente registrasse o aluguel em um livro de registro (a lista jogosAlugados).
+
+No testeJson.kt, estamos simulando alguns clientes (Gamers) e jogos (Jogos) que temos na locadora. Selecionamos alguns jogos específicos (usando listaJogoJson.get(numero)), como se estivéssemos pegando os jogos das prateleiras. Criamos diferentes períodos de aluguel (usando plusDays), como se estivéssemos oferecendo opções de aluguel por 3, 7 ou 10 dias. Finalmente, simulamos os aluguéis, como se o atendente estivesse registrando cada aluguel na gaveta de cada cliente. Ao final, imprimimos o conteúdo da gaveta de um cliente específico (println(gamerCaroline.jogosAlugados)), como se estivéssemos verificando o histórico de aluguéis de um cliente em particular.
