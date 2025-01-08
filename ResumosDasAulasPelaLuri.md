@@ -618,3 +618,40 @@ Agora, pense nos descontos como uma espécie de "estrela dourada" que os membros
 Na prática, quando um gamer aluga jogos, o sistema verifica quantos jogos ele alugou no mês e, se ele tiver alugado mais do que o número permitido pelo seu plano, o sistema calcula o valor a ser pago. Se ele tiver uma boa reputação (ou seja, uma média acima de 8), o valor final é reduzido, como se o sistema estivesse aplicando um "poder mágico" que diminui o preço.
 
 Assim, ao implementar o desconto no plano assinatura, estamos tornando a experiência do gamer ainda mais vantajosa, incentivando-o a alugar mais jogos e a manter uma boa reputação no clube. Isso não só melhora a satisfação do cliente, mas também estimula a interação e a comunidade entre os gamers.
+
+
+## Criando uma lista de recomendacoes de jogos
+
+
+Na aula, a Camila e a Caroline são essas críticas literárias. Para que elas possam compartilhar suas opiniões, precisamos criar um espaço na biblioteca onde elas possam guardar suas resenhas. Esse espaço é a lista chamada jogosRecomendados, que funciona como uma prateleira onde elas podem colocar os livros (jogos) que recomendam.
+
+Quando a Camila decide recomendar um livro, ela precisa escrever uma resenha (nota) sobre ele. Para isso, ela usa um método chamado recomendarJogo(), que é como um formulário que ela preenche com o nome do livro e a sua nota. Assim, a resenha é registrada e o livro é colocado na prateleira de recomendações.
+
+Depois que a Camila faz suas recomendações, a Caroline também tem a chance de compartilhar suas opiniões. Ambas têm suas prateleiras de recomendações, e ao final, podemos olhar para essas prateleiras e ver quais livros (jogos) elas acharam mais interessantes.
+
+
+Começamos definindo uma lista chamada jogosRecomendados, que armazena os jogos que cada gamer recomenda. Em seguida, implementamos o método recomendarJogo(), que permite que um gamer recomende um jogo, atribuindo uma nota a ele.
+
+Dentro desse método, chamamos o método recomendar da classe Jogo para registrar a nota e, em seguida, adicionamos o jogo à lista de recomendações. Por fim, testamos o sistema com dois gamers, a Camila e a Caroline, que recomendam jogos e exibimos suas listas de recomendações.
+
+O objetivo é capturar as avaliações dos jogos, permitindo que as opiniões dos gamers sejam armazenadas e acessíveis. Se precisar de mais detalhes ou quiser praticar, estou aqui para ajudar!
+
+
+## Serializando informações
+
+Vamos imaginar que estamos em uma biblioteca cheia de livros, onde cada livro representa um jogo. Cada livro tem várias informações: título, capa, descrição, preço e notas. Agora, a Camila quer compartilhar suas recomendações de leitura (jogos) com a Caroline, mas ela não quer que todas as informações sejam enviadas, apenas o título e a capa.
+
+Primeiro, pensamos na desserialização como se estivéssemos pegando um livro da estante e abrindo suas páginas para entender o que está escrito. Assim, conseguimos transformar um texto (como uma sinopse) em algo que podemos ler e entender, ou seja, em objetos que representam os jogos.
+
+Agora, para compartilhar as recomendações, precisamos fazer o caminho inverso: a serialização. Isso é como pegar as informações que temos sobre os livros e criar uma lista de recomendações em um formato que seja fácil de enviar, como um cartão postal. Nesse cartão, queremos incluir apenas o título e a capa, deixando de lado a descrição e o preço, que não são necessários para a Camila compartilhar.
+
+Para isso, usamos o GsonBuilder como se fosse um editor de cartões postais. Ele nos permite escolher exatamente o que queremos incluir no nosso cartão. Ao usar a anotação @Expose, estamos dizendo ao editor que apenas as informações que têm essa anotação devem aparecer no cartão.
+
+Depois de criar nosso cartão postal com as recomendações, precisamos guardá-lo em um lugar seguro, como uma caixa de correio. Aqui, usamos a classe File do Java para criar um arquivo chamado jogosRecomendados.json, onde vamos armazenar nosso cartão postal.
+
+Por fim, ao escrever o conteúdo no arquivo, estamos colocando nosso cartão postal na caixa de correio, pronto para ser enviado à Caroline. Assim, conseguimos compartilhar as recomendações de forma organizada e prática, permitindo que a Camila mostre seus jogos favoritos sem complicações!
+
+## Compartilhando Jogos Recomendados
+
+
+https://alu-games.vercel.app/#content
