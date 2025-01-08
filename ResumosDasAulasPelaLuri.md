@@ -572,3 +572,49 @@ Classe selada: Um manual geral com um cadeado, que define as características b�
 ### [HERANÇA](https://kotlinlang.org/docs/inheritance.html#overriding-properties)
 ### [CLASSE ABSTRATA](https://kotlinlang.org/docs/classes.html#abstract-classes)
 ### [CLASSE SELADA](https://kotlinlang.org/docs/sealed-classes.html)
+
+## Estruturando o conceito de recomendação
+
+Imagine que estamos em uma escola de música. Nessa escola, temos diferentes alunos (gamers) que podem escolher diferentes instrumentos (jogos) para tocar. Cada aluno pode dar uma nota e um comentário sobre a música que tocaram, assim como os gamers avaliam os jogos.
+
+Agora, para incentivar os alunos a se envolverem mais com a escola e a se ajudarem mutuamente, a escola decide oferecer um "desconto por reputação". Isso significa que quanto mais um aluno participa, avaliando e ajudando outros, maior será o desconto que ele receberá nas mensalidades.
+
+No entanto, aqui está o desafio: não existe um "instrumento-mestre" que todos os alunos tocam, e cada aluno tem seu próprio estilo e instrumento. Assim, não podemos usar a herança (como se fosse uma classe de instrumentos) para criar uma estrutura comum. Em vez disso, a escola decide criar um "contrato" que todos os alunos devem seguir, que é a interface.
+
+Essa interface é como um conjunto de regras que todos os alunos devem seguir para poderem participar da avaliação. Por exemplo, todos devem ter uma "média" de notas e um método para "recomendar" a música que tocaram.
+
+Então, a interface é como um guia que diz: "Se você quer participar, precisa ter uma média e um jeito de recomendar suas músicas". Assim, mesmo que cada aluno toque um instrumento diferente, todos seguem as mesmas regras e podem interagir de forma justa.
+
+Ao final da aula, aprendemos que, assim como na escola de música, a interface nos permite criar um espaço onde diferentes classes (alunos) podem se conectar e colaborar, mesmo que não tenham uma origem comum.
+
+## Aplicando Interfaces
+
+Imagine que estamos em uma escola de música. Na escola, existe uma "regra" que todos os alunos devem seguir para se tornarem músicos competentes. Essa regra é como a interface Recomendavel que criamos. Ela define o que um músico deve ter: a habilidade de tocar um instrumento (que seria a média das notas) e a capacidade de receber e aplicar feedback (que seria o método recomendar()).
+
+Agora, pense na classe Gamer como um aluno dessa escola de música. Para que esse aluno possa ser considerado um músico, ele precisa "assinar" a regra da escola, ou seja, implementar a interface Recomendavel. Isso é feito ao adicionar a interface à classe, assim como um aluno se inscreve nas regras da escola.
+
+Quando o aluno começa a tocar, ele precisa de um lugar para guardar suas notas, assim como o Gamer precisa de uma lista (listaNotas) para armazenar as notas que recebe. Essa lista é como um caderno onde o aluno anota suas notas de cada apresentação.
+
+Ao calcular a média das notas, o aluno usa uma fórmula que já está disponível para ele, assim como o método average() que usamos na lista de notas. Isso facilita a vida do aluno, pois ele não precisa fazer os cálculos manualmente.
+
+Por fim, quando o aluno se apresenta, ele quer mostrar não apenas suas habilidades, mas também como está se saindo em relação às regras da escola. O método toString() é como a apresentação final, onde ele exibe seu nome, e-mail e a média das notas, permitindo que todos vejam seu progresso.
+
+### [INTERFACES](https://kotlinlang.org/docs/interfaces.html)
+
+## Calculando desconto para o plano avulso
+
+Imagine que estamos em uma loja de jogos, onde os clientes são os gamers e os planos de aluguel de jogos são como diferentes tipos de pacotes de assinatura. O plano avulso é como comprar um ingresso para um show: você paga um valor específico para assistir a uma única apresentação. Agora, se você é um fã assíduo e tem uma boa reputação na loja, como um cliente fiel que sempre recomenda os melhores shows, você ganha um desconto especial, como um "ingresso VIP".
+
+Na aula, a classe PlanoAvulso representa esse ingresso para o show. O método obterValor() é como o caixa da loja que calcula o preço do ingresso. Se você tem uma boa reputação (uma média acima de 8), o caixa aplica um desconto de 10%, tornando o ingresso mais acessível. Se sua reputação não é tão alta, você paga o preço cheio, como qualquer outro cliente.
+
+Assim, a lógica do desconto é semelhante a um sistema de recompensas: quanto melhor a sua reputação, mais benefícios você recebe. E, ao final, quando você vai embora da loja, o caixa imprime um recibo que mostra o valor original e o valor com desconto, para que você possa ver o quanto economizou.
+
+## Implementando descontos para o plano por assinatura
+
+Imagine que estamos em uma loja de aluguel de jogos, que funciona como um clube exclusivo para gamers. Nesse clube, existem diferentes tipos de planos de assinatura, assim como diferentes níveis de acesso a benefícios. O plano assinatura é como um passe VIP que permite que os membros aluguem jogos de forma mais flexível e com vantagens especiais.
+
+Agora, pense nos descontos como uma espécie de "estrela dourada" que os membros podem ganhar. Quanto melhor a reputação do gamer, mais estrelas douradas ele acumula. Se um gamer tem uma média de desempenho acima de 8, é como se ele tivesse conquistado uma estrela dourada, que lhe dá direito a um desconto especial na mensalidade do plano assinatura.
+
+Na prática, quando um gamer aluga jogos, o sistema verifica quantos jogos ele alugou no mês e, se ele tiver alugado mais do que o número permitido pelo seu plano, o sistema calcula o valor a ser pago. Se ele tiver uma boa reputação (ou seja, uma média acima de 8), o valor final é reduzido, como se o sistema estivesse aplicando um "poder mágico" que diminui o preço.
+
+Assim, ao implementar o desconto no plano assinatura, estamos tornando a experiência do gamer ainda mais vantajosa, incentivando-o a alugar mais jogos e a manter uma boa reputação no clube. Isso não só melhora a satisfação do cliente, mas também estimula a interação e a comunidade entre os gamers.
