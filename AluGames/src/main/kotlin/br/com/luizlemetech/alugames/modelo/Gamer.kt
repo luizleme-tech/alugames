@@ -1,5 +1,6 @@
 package br.com.luizlemetech.alugames.modelo
 
+import br.com.luizlemetech.alugames.utilitario.formatarComDuasCasas
 import java.util.*
 import kotlin.random.Random
 
@@ -18,12 +19,22 @@ data class Gamer(var nome: String, var email: String): Recomendavel {
     val jogosAlugados = mutableListOf<Aluguel>()
     var plano: Plano = PlanoAvulso("BRONZE")
     private val listaNotas = mutableListOf<Int>()
+    val jogosRecomendados = mutableListOf<Jogo>()
 
     override val media: Double
-        get() = listaNotas.average()
+        get() = listaNotas.average().formatarComDuasCasas()
 
     override fun recomendar(nota: Int) {
-        listaNotas.add(nota)
+        if (nota < 1 || nota > 10) {
+            println("Nota invalida. Insira uma nota entre 1 e 10")
+        } else {
+            listaNotas.add(nota)
+        }
+    }
+
+    fun recomendarJogo(jogo: Jogo, nota: Int) {
+        jogo.recomendar(nota)
+        jogosRecomendados.add(jogo)
     }
 
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
