@@ -9,9 +9,11 @@
   <img src="" align="center" style="border-radius: 50%; display: block; margin: auto;" width="35%" >
 </p>
 
+![Static Badge](https://img.shields.io/badge/project%20status-developing-red?logoColor=white)
 [![Java Version](https://img.shields.io/badge/Java-11-blue)](https://www.oracle.com/java/)
-[![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
+[![Kotlin](https://img.shields.io/badge/kotlin-1.9.22-blue?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![License](https://img.shields.io/github/license/luizleme-tech/alugames)](LICENSE)
+![Static Badge](https://img.shields.io/badge/developer-%20luiz%20leme-orange?logoColor=white)
 
 ## Índice
 
