@@ -20,6 +20,7 @@ data class Gamer(var nome: String, var email: String): Recomendavel {
     var plano: Plano = PlanoAvulso("BRONZE")
     private val listaNotas = mutableListOf<Int>()
     val jogosRecomendados = mutableListOf<Jogo>()
+    var id: Int? = null
 
     override val media: Double
         get() = listaNotas.average().formatarComDuasCasas()
@@ -42,6 +43,14 @@ data class Gamer(var nome: String, var email: String): Recomendavel {
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         criarIdInterno()
+    }
+
+    constructor(nome: String, email: String, dataNascimento: String?, usuario: String?,id:Int=0) :
+            this(nome, email) {
+        this.dataNascimento = dataNascimento
+        this.usuario = usuario
+        this.usuario = usuario
+        this.id = id
     }
 
     init {
