@@ -13,6 +13,7 @@ data class Jogo(
     var descricao:String? = null
     var preco = BigDecimal.ZERO
     private val listaNotas = mutableListOf<Int>()
+    var id: Int? = null
 
     constructor(titulo: String, capa: String, descricao:String):this(titulo, capa){
         this.descricao = descricao
@@ -21,6 +22,12 @@ data class Jogo(
     constructor(titulo: String, capa: String, preco:Double, descricao: String):this(titulo, capa){
         this.preco = BigDecimal(preco).setScale(2, RoundingMode.HALF_UP)
         this.descricao = descricao
+    }
+
+    constructor(titulo: String, capa: String, preco:Double, descricao: String, id:Int):this(titulo, capa){
+        this.preco = BigDecimal(preco).setScale(2, RoundingMode.HALF_UP)
+        this.descricao = descricao
+        this.id = id
     }
 
     override val media: Double
@@ -36,6 +43,7 @@ data class Jogo(
 
     override fun toString(): String {
         return "\n[Jogo]\n" +
+                "Id: $id\n" +
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
