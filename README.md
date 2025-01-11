@@ -10,7 +10,7 @@
 </p>
 
 [![Java Version](https://img.shields.io/badge/Java-11-blue)](https://www.oracle.com/java/)
-[![Kotlin](https://img.shields.io/badge/kotlin-brightgreen)]([https://spring.io/projects/spring-boot](https://kotlinlang.org/))
+[![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![License](https://img.shields.io/github/license/luizleme-tech/alugames)](LICENSE)
 
 ## Índice
