@@ -655,3 +655,68 @@ Por fim, ao escrever o conteúdo no arquivo, estamos colocando nosso cartão pos
 
 
 https://alu-games.vercel.app/#content
+
+# KOTLIN: PERSISTINDO DADOS COM HIBERNATE
+
+## Conectando com o banco de dados
+
+Claro! Nesta aula, aprendemos a conectar um projeto Kotlin a um banco de dados MySQL. Começamos criando um pacote chamado "dados" para organizar as informações do banco. Em seguida, criamos uma classe chamada Banco, que contém um método obterConexao() responsável por estabelecer a conexão com o banco de dados.Para isso, adicionamos a dependência do MySQL no arquivo pom.xml e importamos as classes necessárias do pacote java.sql, como Connection, DriverManager e SQLException. Depois, testamos a conexão criando um arquivo chamado testeBanco, onde instanciamos o objeto Banco e chamamos o método obterConexao(). Por fim, imprimimos a conexão para verificar se tudo estava funcionando corretamente. Essa aula foi um passo importante para começarmos a trabalhar com dados em código usando Kotlin.
+
+Claro! Vamos imaginar que estamos construindo uma ponte para conectar duas ilhas: uma ilha representa nosso projeto em Kotlin e a outra ilha representa o banco de dados MySQL.
+Criando o Pacote "dados": Antes de construir a ponte, precisamos planejar e organizar nosso trabalho. Então, criamos um "pacote" que seria como um canteiro de obras, onde vamos reunir todas as ferramentas e materiais necessários para a construção da ponte.
+Classe Banco: A classe Banco é como o engenheiro responsável pela construção da ponte. Ele tem a tarefa de garantir que a conexão entre as duas ilhas seja feita corretamente. O método obterConexao() é como o projeto da ponte, que descreve como devemos conectar as ilhas.
+Adicionando a Dependência do MySQL: Para construir a ponte, precisamos de materiais específicos, como madeira ou metal. Aqui, a dependência do MySQL no pom.xml é como a compra desses materiais. Sem eles, não conseguimos avançar na construção.
+Importando Classes: Antes de começarmos a construção, precisamos das ferramentas certas, como martelos e serras. As importações de Connection, DriverManager e SQLException são essas ferramentas que nos ajudam a fazer a conexão de forma eficiente.
+Testando a Conexão: Após a construção da ponte, precisamos testá-la para garantir que está segura e funcional. Criamos o arquivo testeBanco, que é como um caminhão que atravessa a ponte pela primeira vez. Se o caminhão (nossa conexão) passar sem problemas, sabemos que a ponte está funcionando corretamente.
+Imprimindo a Conexão: Por fim, ao imprimir a conexão, estamos verificando se a ponte está realmente conectada e se conseguimos acessar a outra ilha. Se tudo estiver certo, a conexão é estabelecida; caso contrário, a ponte pode estar com problemas.
+
+Assim, essa aula nos ensinou a construir uma ponte sólida entre nosso projeto em Kotlin e o banco de dados MySQL, permitindo que possamos trocar informações entre eles de forma eficiente!
+
+
+##  Conectando com o banco de dados
+
+Claro! Vamos usar algumas analogias para descrever a aula de forma mais lúdica.Imagine que você está construindo uma casa (seu projeto) e precisa de um lugar para armazenar todas as suas coisas (os dados). Para isso, você decide construir um depósito (o banco de dados). 
+Criando o Pacote: Primeiro, você precisa de um espaço organizado dentro da sua casa para guardar as ferramentas e materiais que usará para construir o depósito. Isso é como criar um pacote no seu projeto, onde você organiza tudo que está relacionado ao banco de dados.
+Classe Banco: Agora, você precisa de um responsável que cuide do depósito, alguém que saiba como acessar e gerenciar tudo que está lá dentro. Essa pessoa é a classe Banco, que vai te ajudar a fazer a conexão com o depósito (banco de dados).
+Adicionando a Dependência do MySQL: Para que essa pessoa (classe Banco) consiga acessar o depósito, você precisa dar a ela as chaves certas. Essas chaves são como a dependência do MySQL que você adiciona ao seu projeto, permitindo que o código se conecte ao banco de dados.
+Realizando a Conexão: Quando você tenta abrir a porta do depósito, você precisa usar a chave correta. O método obterConexao() é como essa ação de tentar abrir a porta: se você tiver a chave certa (as informações corretas do banco), a porta se abre e você consegue acessar o que está dentro. Se não, a porta permanece fechada.
+Arquivo de Teste: Para garantir que tudo está funcionando, você decide fazer um teste: você vai até a porta do depósito e tenta abri-la. O arquivo testeBanco.kt é como você fazendo esse teste, verificando se a conexão foi bem-sucedida e se você consegue acessar o depósito.
+Usando o Objeto Banco: Ao mudar a classe Banco para um objeto, você está dizendo que só precisa de uma única chave para acessar o depósito, tornando tudo mais simples. Assim, você não precisa ficar procurando a chave toda vez que quiser entrar.
+
+Por fim, ao executar o teste, você espera ver a porta se abrindo e o depósito acessível, confirmando que sua conexão com o banco de dados está funcionando corretamente.Espero que essas analogias tenham ajudado a entender melhor o conteúdo da aula! Se precisar de mais alguma coisa, é só avisar!
+
+### [KOTLIN - OBJECT DECLARATION AND EXPRESSION](https://kotlinlang.org/docs/object-declarations.html#object-declarations-overview)
+
+### [JDBC](https://www.alura.com.br/artigos/conhecendo-o-jdbc)
+
+### [PERSISTENCIA EM KOTLIN COM JDBC](https://www.alura.com.br/artigos/persistencia-com-kotlin-utilizando-JDBC)
+
+
+## Consultando jogos
+
+Claro! Vamos imaginar que estamos em uma biblioteca gigante, cheia de livros (que representam os jogos) organizados em prateleiras (que representam o banco de dados). Conexão com a Biblioteca
+Primeiro, precisamos abrir a porta da biblioteca, que é como estabelecer uma conexão com o banco de dados. Assim que entramos, podemos ver as prateleiras, mas ainda não temos acesso aos livros. Para isso, precisamos de um "bibliotecário" (que seria o nosso código) que nos ajude a encontrar os livros que queremos.Criando a Lista de Livros
+Assim que temos acesso à biblioteca, decidimos que queremos fazer uma lista de todos os livros disponíveis. Então, criamos uma folha em branco chamada listaJogos, onde iremos anotar os títulos dos livros que encontrarmos.Pedindo Ajuda ao Bibliotecário
+Para encontrar os livros, chamamos o bibliotecário e pedimos para ele nos ajudar. No nosso código, isso é feito através do método getJogos(), que é como pedir ao bibliotecário para nos trazer uma lista de todos os jogos disponíveis.Verificando a Conexão
+Antes de começar a procurar os livros, precisamos garantir que a biblioteca está aberta e que o bibliotecário está disponível. Se a biblioteca estiver fechada, não podemos fazer nada. Isso é como verificar se a conexão com o banco de dados está ativa.Fazendo o Pedido
+Uma vez que temos certeza de que a biblioteca está aberta, pedimos ao bibliotecário para nos trazer todos os livros. No código, isso é feito através do statement, que é como um pedido formal para que o bibliotecário busque as informações que precisamos.Recebendo os Livros
+O bibliotecário vai até as prateleiras, pega os livros e nos traz. Cada livro que ele traz é como uma linha de resultado da nossa consulta ao banco de dados. Para cada livro, anotamos as informações importantes, como o título, a capa, a descrição e o preço, assim como faríamos ao anotar detalhes sobre cada livro na nossa lista.Adicionando à Lista
+Assim que temos todas as informações, colocamos cada livro na nossa lista listaJogos, que agora está cheia de títulos e detalhes dos jogos que encontramos na biblioteca.Fechando a Biblioteca
+Depois de terminar nossa busca, agradecemos ao bibliotecário e fechamos a porta da biblioteca, assim como fazemos ao encerrar a conexão com o banco de dados. Conclusão
+No final, temos uma lista completa de todos os jogos disponíveis, e conseguimos consultá-los com sucesso, assim como teríamos feito ao visitar uma biblioteca e anotar os livros que encontramos. Essa analogia ajuda a entender como funciona a consulta a dados em um banco de dados usando JDBC! Se precisar de mais alguma explicação ou exercício, estou aqui para ajudar!
+
+## Incluindo jogos
+
+Claro! Vamos imaginar que estamos em uma cozinha preparando um prato delicioso, que representa o nosso jogo.
+Ingredientes: Antes de começar a cozinhar, precisamos reunir todos os ingredientes. No nosso caso, os ingredientes são as informações do jogo, como título, capa, preço e descrição. Assim como na cozinha, onde cada ingrediente tem seu papel, cada informação é essencial para criar um jogo completo.
+Receita: A receita é como o nosso código. Ela nos guia passo a passo sobre como combinar os ingredientes. No código, temos a função adicionarJogo(), que é como a receita que nos diz como adicionar um novo jogo ao nosso "prato" (banco de dados).
+Cozinhar: Quando começamos a cozinhar, precisamos de uma boa panela (a conexão com o banco de dados). Se a panela não estiver quente ou não for adequada, o prato não sairá como esperado. Da mesma forma, precisamos garantir que a conexão com o banco de dados esteja funcionando corretamente.
+Misturando os Ingredientes: Assim como misturamos os ingredientes na panela, no código, usamos o statement para preparar a inserção dos dados. Cada setString() e setDouble() é como adicionar uma pitada de sal ou um pouco de tempero, garantindo que cada parte do jogo seja bem incorporada.
+Cozinhando o Prato: Depois de misturar tudo, precisamos cozinhar o prato. No código, isso é feito com o statement.executeUpdate(), que é o momento em que enviamos a receita para a panela e esperamos que tudo cozinhe junto.
+Servindo o Prato: Finalmente, quando o prato está pronto, podemos servi-lo. No nosso caso, isso significa listar os jogos que estão no banco de dados. Assim como servimos um prato em uma bela apresentação, mostramos os jogos que foram adicionados.
+Organização da Cozinha: Por último, assim como uma cozinha organizada facilita o preparo dos pratos, a utilização do padrão DAO (Data Access Object) ajuda a manter nosso código limpo e organizado, separando as responsabilidades de acesso aos dados em uma classe específica, a JogosDAO.
+
+Dessa forma, a aula nos ensina a "cozinhar" um jogo no código, garantindo que todos os passos sejam seguidos corretamente para que o resultado final seja saboroso e bem apresentado!
+
+### [DAO](https://www.oracle.com/java/technologies/data-access-object.html)
+
