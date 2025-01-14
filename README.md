@@ -17,8 +17,6 @@
 
 ## Índice
 
-- [AluGames](#alugames)
-  - [Índice](#índice)
   - [Sobre o Projeto](#sobre-o-projeto)
   - [Status do Projeto](#status-do-projeto)
   - [Recursos e Funcionalidades](#recursos-e-funcionalidades)
