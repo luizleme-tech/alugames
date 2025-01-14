@@ -9,7 +9,7 @@
   <img src="" align="center" style="border-radius: 50%; display: block; margin: auto;" width="35%" >
 </p>
 
-![Static Badge](https://img.shields.io/badge/project%20status-developing-red?logoColor=white)
+![Static Badge](https://img.shields.io/badge/project%20status-finished-green?logoColor=white)
 [![Java Version](https://img.shields.io/badge/Java-11-blue)](https://www.oracle.com/java/)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.22-blue?logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![License](https://img.shields.io/github/license/luizleme-tech/alugames)](LICENSE)
@@ -17,16 +17,18 @@
 
 ## Índice
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Status do Projeto](#status-do-projeto)
-- [Recursos e Funcionalidades](#recursos-e-funcionalidades)
-- [Requisitos](#requisitos)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Instalação e Configuração](#instalação-e-configuração)
-- [Execução do Projeto](#execução-do-projeto)
-- [Contribuições](#contribuições)
-- [Licença](#licença)
-- [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras-do-projeto)
+- [AluGames](#alugames)
+  - [Índice](#índice)
+  - [Sobre o Projeto](#sobre-o-projeto)
+  - [Status do Projeto](#status-do-projeto)
+  - [Recursos e Funcionalidades](#recursos-e-funcionalidades)
+  - [Requisitos](#requisitos)
+  - [Estrutura do Projeto](#estrutura-do-projeto)
+  - [Instalação e Configuração](#instalação-e-configuração)
+  - [Execução do Projeto](#execução-do-projeto)
+  - [Contribuições](#contribuições)
+  - [Licença](#licença)
+  - [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras-do-projeto)
 
 ## Sobre o Projeto
 
@@ -116,7 +118,7 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para m
 
 ## Pessoas Desenvolvedoras do Projeto
 
-| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/160872945?v=4" width=115><br><sub>Luiz Henrique Leme</sub>](https://github.com/luizleme-tech) | 
-| :---: | 
+| [<img loading="lazy" src="https://avatars.githubusercontent.com/u/160872945?v=4" width=115><br><sub>Luiz Henrique Leme</sub>](https://github.com/luizleme-tech) |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 
 
