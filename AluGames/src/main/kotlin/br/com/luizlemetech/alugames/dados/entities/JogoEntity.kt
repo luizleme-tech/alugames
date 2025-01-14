@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name ="jogos")
-class JogoEntity(
+open class JogoEntity(
     val titulo:String = "Titulo do Jogo",
     val capa: String = "Capa do Jogo",
     val preco: Double = 0.0,
